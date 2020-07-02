@@ -1,14 +1,14 @@
 {
   "development": {
     "username": "root",
-    "password": "developer",
-    "database": "passport_demo",
+    "password": null,
+    "database": "foodtrucks_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": "developer",
+    "password": null,
     "database": "database_test",
     "host": "127.0.0.1",
     "dialect": "mysql"

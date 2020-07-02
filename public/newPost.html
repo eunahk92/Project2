@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mother Trucker!</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Subrayada:wght@700&display=swap" rel="stylesheet">
+    <link href="stylesheets/style.css" rel="stylesheet">
+</head>
+
+<body class="container is-fluid">
+    <nav class="navbar is-light" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="https://bulma.io">
+            <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+            </a>
+
+            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+            <a class="navbar-item">
+                Home
+            </a>
+
+            <a class="navbar-item">
+                Documentation
+            </a>
+
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">
+                More
+                </a>
+
+                <div class="navbar-dropdown">
+                <a class="navbar-item">
+                    About
+                </a>
+                <a class="navbar-item">
+                    Jobs
+                </a>
+                <a class="navbar-item">
+                    Contact
+                </a>
+                <hr class="navbar-divider">
+                <a class="navbar-item">
+                    Report an issue
+                </a>
+                </div>
+            </div>
+            </div>
+
+            <div class="navbar-end">
+            <div class="navbar-item">
+                <div class="buttons">
+                <a class="button is-link is-outlined">
+                    <strong>Sign up</strong>
+                </a>
+                <a class="button is-link is-outlined">
+                    Log in
+                </a>
+                </div>
+            </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero is-medium is-warning is-bold">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                MOTHER TRUCKERS
+                </h1>
+                <h3 class="subtitle">
+                Calling all Food Truck Lovers
+                </h3>
+            </div>
+        </div>
+    </section>
+      
+    <main class="section columns is-mobile">
+        <div class="column is-three-fifths is-offset-one-fifth">
+            <form class="trucker-form">
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="name">Food Truck Name:</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <div class="control">
+                                <input class="input is-info" id="trucker_name" type="text" placeholder="Food Truck Name">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="address">Street Address:</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <div class="control">
+                                <input class="input is-info" id="trucker_addy" type="text" placeholder="Street Address">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="address_extra">City/ State/ Zip</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <input class="input is-info" id="trucker_city" type="text" placeholder="City">
+                        </div>
+                        <div class="field">
+                            <input class="input is-info" id="trucker_state" type="text" placeholder="State">
+                        </div>
+                        <div class="field">
+                            <input class="input is-info" id="trucker_zipcode" type="text" placeholder="Zipcode">
+                        </div>
+                    </div>
+                </div>
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="start_time">Start Time:</label>
+                    </div>
+                    <div class="field is-grouped">
+                        <div class="control">
+                            <div class="select is-warning">
+                                <select id="startTime">
+                                    <option selected>Select Start Time</option>
+                                    <option>00:00</option>
+                                    <option>1:00</option>
+                                    <option>2:00</option>
+                                    <option>3:00</option>
+                                    <option>4:00</option>
+                                    <option>5:00</option>
+                                    <option>6:00</option>
+                                    <option>7:00</option>
+                                    <option>8:00</option>
+                                    <option>9:00</option>
+                                    <option>10:00</option>
+                                    <option>11:00</option>
+                                    <option>12:00</option>
+                                    <option>13:00</option>
+                                    <option>14:00</option>
+                                    <option>15:00</option>
+                                    <option>16:00</option>
+                                    <option>17:00</option>
+                                    <option>18:00</option>
+                                    <option>19:00</option>
+                                    <option>20:00</option>
+                                    <option>21:00</option>
+                                    <option>22:00</option>
+                                    <option>23:00</option>
+                                    <option>24:00</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field-label is-normal">
+                        <label class="end_time">End Time:</label>
+                    </div>
+                    <div class="field is-grouped">
+                        <div class="control">
+                            <div class="select is-warning">
+                                <select id="endTime">
+                                    <option selected>Select End Time</option>
+                                    <option>00:00</option>
+                                    <option>1:00</option>
+                                    <option>2:00</option>
+                                    <option>3:00</option>
+                                    <option>4:00</option>
+                                    <option>5:00</option>
+                                    <option>6:00</option>
+                                    <option>7:00</option>
+                                    <option>8:00</option>
+                                    <option>9:00</option>
+                                    <option>10:00</option>
+                                    <option>11:00</option>
+                                    <option>12:00</option>
+                                    <option>13:00</option>
+                                    <option>14:00</option>
+                                    <option>15:00</option>
+                                    <option>16:00</option>
+                                    <option>17:00</option>
+                                    <option>18:00</option>
+                                    <option>19:00</option>
+                                    <option>20:00</option>
+                                    <option>21:00</option>
+                                    <option>22:00</option>
+                                    <option>23:00</option>
+                                    <option>24:00</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="category">Cuisine Type:</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <div class="control">
+                                <div class="select is-warning is-fullwidth">
+                                    <select id="foodTypes">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="buttons has-addons is-right">
+                    <button type="submit" class="button is-success" id="submitBtn">Submit Food Truck</button>
+                </div>
+            </form>
+        </div>
+    </main>    
+    
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>
+            <strong>MOTHER TRUCKER!</strong> by Chris Smith, Eunah Kim, and Matias Daldi | (c) 2020.
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="js/newpost.js" type="text/javascript"></script>
+</body>
+</html>

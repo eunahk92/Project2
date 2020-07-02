@@ -1,27 +1,33 @@
-/* eslint-disable prettier/prettier */
-$(() => {
-  $(".").on("click", e => {
-    e.preventDefault();
+let foodTypeSelect = $("#foodTypes");
+let submitForm = $("#submitBtn");
 
-    let truckerName = $("#trucker_name").val().trim();
-    truckerName = capitalizeWords(truckerName);
-    let truckerAddress = $("#trucker_addy").val().trim();
-    truckerAddress = capitalizeWords(truckerAddress);
-    let truckerCity = $("#trucker_city").val().trim();
-    truckerCity = capitalizeWords(truckerCity);
-    let truckerState = $("#trucker_state").val().trim();
-    truckerState = capitalizeWords(truckerState);
-    const truckerZipcode = $("#trucker_zipcode").val().trim();
+$(document).ready(function() {
+  submitForm.on("click", function(event) {
+    event.preventDefault();
 
-    const truckerPost = {
+    let truckerName = capitalizeWords($("#trucker_name").val().trim());
+    let address = capitalizeWords($("#trucker_addy").val().trim());
+    let city = capitalizeWords($("#trucker_city").val().trim());
+    let state = capitalizeWords($("#trucker_state").val().trim());
+    let zipcode = $("#trucker_zipcode").val().trim();
+    let foodType = $("#foodTypes option:selected").val();
+    let startTime = $("#startTime option:selected").val();
+    let endTime = $("#endTime option:selected").val();
+
+    let truckerPost = {
       trucker_name: truckerName,
-      street_address: truckerAddress,
-      city: truckerCity,
-      state: truckerState,
-      zipcode: truckerZipcode
+      street_address: address,
+      city: city,
+      state: state,
+      zipcode: zipcode,
+      food_type: foodType,
+      time_start: startTime,
+      time_end: endTime
     };
+    
+    console.log(truckerPost);
 
-    $.ajax("/api/burgers", {
+    $.ajax("/api/foodtrucks", {
       type: "POST",
       data: truckerPost
     }).then(() => {
@@ -29,7 +35,28 @@ $(() => {
       location.reload();
     });
   });
+
+  getCategories = () => {
+    $.get("/api/categories", (data) => {
+      let rowsToAdd = [];
+      for (var i = 0; i < data.length; i++) {
+        let listOption = `
+          <option data-id="${data[i].id}">${data[i].food_type}</option>
+        `
+        rowsToAdd.push(listOption);
+      }
+      foodTypeSelect.empty();
+      console.log(rowsToAdd);
+      console.log(foodTypeSelect);
+      foodTypeSelect.append(rowsToAdd);
+      // foodTypeSelect.val(authorId);
+    })
+  }
+
+
+  getCategories();
 });
 
 capitalizeWords = str => str.replace(/\w\S*/g, 
   txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
+
