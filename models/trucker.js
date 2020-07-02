@@ -1,7 +1,7 @@
 module.exports = function(sequelize, DataTypes) {
     const Trucker = sequelize.define("truckers", {
       trucker_name: {
-        type: DataTypes.TIME,
+        type: DataTypes.STRING,
         allowNull: false,
         validate: {
             len: [1]
@@ -29,7 +29,7 @@ module.exports = function(sequelize, DataTypes) {
         }
       },
       zipcode: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false,
         validate: {
             len: [1]

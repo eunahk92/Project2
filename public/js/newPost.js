@@ -10,9 +10,11 @@ $(document).ready(function() {
     let city = capitalizeWords($("#trucker_city").val().trim());
     let state = capitalizeWords($("#trucker_state").val().trim());
     let zipcode = $("#trucker_zipcode").val().trim();
-    let foodType = $("#foodTypes option:selected").val();
+    let foodType = $("#foodTypes option:selected").data("id");
     let startTime = $("#startTime option:selected").val();
+    startTime = startTime + ":00";
     let endTime = $("#endTime option:selected").val();
+    endTime = endTime + ":00";
 
     let truckerPost = {
       trucker_name: truckerName,
@@ -49,11 +51,8 @@ $(document).ready(function() {
       console.log(rowsToAdd);
       console.log(foodTypeSelect);
       foodTypeSelect.append(rowsToAdd);
-      // foodTypeSelect.val(authorId);
     })
   }
-
-
   getCategories();
 });
 
