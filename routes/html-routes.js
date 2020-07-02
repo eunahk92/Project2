@@ -8,7 +8,11 @@ const db = require("../models");
 
 module.exports = function(app) {
   app.get("/", (req, res) => {
-    db.categories.findAll({}).then(dbCategories => {
+    db.categories.findAll({ 
+      order: [
+        ["food_type", "ASC"]
+      ]
+     }).then(dbCategories => {
       res.render("index", { food_type: dbCategories });
     });
   });
