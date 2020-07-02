@@ -2,3 +2,8 @@ form.signup,
 form.login {
   margin-top: 50px;
 }
+
+#map { 
+  height: 530px; 
+  width: 100%;
+}
