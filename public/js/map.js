@@ -1,8 +1,40 @@
-const arrayOfAddresses = [];
-
+/* eslint-disable prefer-const */
 L.mapquest.key = "73YJDA218NrKCKrYr26MlqZldZPNKktE";
 
-L.mapquest.geocoding().geocode(arrayOfAddresses, createMap);
+// eslint-disable-next-line camelcase
+// let searchTerm = { food_type: "American" };
+
+init();
+
+function init() {
+  let arrayOfAddresses = [];
+  let truckNameArray = [];
+  $.ajax("/api/foodtrucks", {
+    type: "GET"
+  }).then(result => {
+    console.log(result.data);
+    for (i = 0; i < result.length; i++) {
+      let fullAddress =
+        result[i].street_address +
+        ", " +
+        result[i].city +
+        ", " +
+        result[i].state +
+        " " +
+        result[i].zipcode;
+      let truckName = result[i].trucker_name + ", ";
+      truckNameArray.push(truckName);
+      arrayOfAddresses.push(fullAddress);
+    }
+    Promise.all(arrayOfAddresses)
+      .then(runMapquest(arrayOfAddresses))
+      .then(console.log(truckNameArray));
+  });
+}
+
+function runMapquest(arrayOfAddresses) {
+  L.mapquest.geocoding().geocode(arrayOfAddresses, createMap);
+}
 
 function createMap(error, response) {
   const map = L.mapquest.map("map", {

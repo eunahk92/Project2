@@ -1,3 +1,9 @@
+/* eslint-disable vars-on-top */
+/* eslint-disable prettier/prettier */
+/* eslint-disable prefer-const */
+/* eslint-disable prefer-arrow-callback */
+/* eslint-disable no-var */
+/* eslint-disable camelcase */
 let foodTypeSelect = $("#foodTypes");
 let submitForm = $("#submitBtn");
 
@@ -44,18 +50,19 @@ $(document).ready(function() {
       for (var i = 0; i < data.length; i++) {
         let listOption = `
           <option data-id="${data[i].id}">${data[i].food_type}</option>
-        `
+        `;
         rowsToAdd.push(listOption);
       }
       foodTypeSelect.empty();
       console.log(rowsToAdd);
       console.log(foodTypeSelect);
       foodTypeSelect.append(rowsToAdd);
-    })
-  }
+    });
+  };
   getCategories();
 });
 
-capitalizeWords = str => str.replace(/\w\S*/g, 
-  txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
-
+capitalizeWords = str => str.replace(
+  /\w\S*/g,
+  txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
+);
