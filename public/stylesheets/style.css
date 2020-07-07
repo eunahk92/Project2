@@ -12,3 +12,17 @@ form.login {
   font-family: 'Permanent Marker', cursive;
   font-size: 50px;
 }
+
+.subtitle {
+  font-family: "Courier", Lucida Console, monospace;
+}
+
+html,
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+body > footer {
+    margin-top: auto;
+}

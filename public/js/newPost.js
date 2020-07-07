@@ -1,8 +1,8 @@
 const foodTypeSelect = $("#foodTypes");
 const submitForm = $("#submitBtn");
 
-$(document).ready(function() {
-  submitForm.on("click", function(event) {
+$(document).ready(() => {
+  submitForm.on("click", event => {
     event.preventDefault();
 
     let truckerName = capitalizeWords($("#trucker_name").val().trim());
@@ -25,19 +25,14 @@ $(document).ready(function() {
       time_end: endTime
     };
     
-    console.log(truckerPost);
-
     $.ajax("/api/foodtrucks", {
       type: "POST",
       data: truckerPost
-    }).then(() => {
-      console.log("New Food Truck Post has been added.");
-      location.reload();
-    });
+    }).then(() => location.reload());
   });
 
   getCategories = () => {
-    $.get("/api/categories", (data) => {
+    $.get("/api/categories", data => {
       let rowsToAdd = [];
       for (var i = 0; i < data.length; i++) {
         let listOption = `
