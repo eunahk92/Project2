@@ -1,12 +1,7 @@
-/* eslint-disable semi */
-/* eslint-disable camelcase */
-/* eslint-disable quotes */
-/* eslint-disable indent */
-/* eslint-disable prettier/prettier */
 const db = require("../models");
 const moment = require("moment");
 
-module.exports = function(app) {
+module.exports = function (app) {
     app.get("/api/categories", (req, res) => {
         db.categories.findAll({
             order: [
@@ -26,19 +21,19 @@ module.exports = function(app) {
             }
         }).then(dbTruckers => {
             res.render("blog", { post: dbTruckers })
-        });   
+        });
     });
-    
+
 
     app.post("/api/foodtrucks", (req, res) => {
         db.truckers.create(req.body).then(dbTruckers => res.json(dbTruckers));
-    });   
+    });
 
-    app.delete("/api/foodtrucks/:postid", function(req, res) {
+    app.delete("/api/foodtrucks/:postid", function (req, res) {
         db.truckers.destroy({
-          where: {
-            id: req.params.postid
-          }
+            where: {
+                id: req.params.postid
+            }
         }).then(dbTrucker => res.json(dbTrucker));
     });
 
