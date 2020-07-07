@@ -1,5 +1,5 @@
-let foodTypeSelect = $("#foodTypes");
-let submitForm = $("#submitBtn");
+const foodTypeSelect = $("#foodTypes");
+const submitForm = $("#submitBtn");
 
 $(document).ready(function() {
   submitForm.on("click", function(event) {
@@ -12,9 +12,7 @@ $(document).ready(function() {
     let zipcode = $("#trucker_zipcode").val().trim();
     let foodType = $("#foodTypes option:selected").data("id");
     let startTime = $("#startTime option:selected").val();
-    startTime = startTime + ":00";
     let endTime = $("#endTime option:selected").val();
-    endTime = endTime + ":00";
 
     let truckerPost = {
       trucker_name: truckerName,
