@@ -1,3 +1,8 @@
+/* eslint-disable semi */
+/* eslint-disable camelcase */
+/* eslint-disable quotes */
+/* eslint-disable indent */
+/* eslint-disable prettier/prettier */
 const db = require("../models");
 const moment = require("moment");
 

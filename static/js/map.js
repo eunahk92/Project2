@@ -1,14 +1,18 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable prefer-const */
 L.mapquest.key = "73YJDA218NrKCKrYr26MlqZldZPNKktE";
 
-$(".button").on("click", () => {
-  init();
+// let searchTerm = [1, 2, 3, 4, 5];
+
+$(".button").on("click", e => {
+  console.log(e.target.id);
+  let searchTerm = e.target.id;
+  Promise.all(searchTerm).then(getMap(searchTerm));
 });
 
-init();
+// getMap(searchTerm);
 
-function init() {
-  let searchTerm = this.id;
+function getMap(searchTerm) {
   let arrayOfAddresses = [];
   let truckNameArray = [];
   $.ajax("/api/foodtrucks", {
@@ -16,7 +20,7 @@ function init() {
   }).then(result => {
     console.log(result);
     for (i = 0; i < result.length; i++) {
-      if (result[i].id === searchTerm) {
+      if (result[i].food_type === searchTerm) {
         let fullAddress =
           result[i].street_address +
           ", " +
