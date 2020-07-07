@@ -1,11 +1,21 @@
 <div class="column is-full">
-    <div class="card">
-        <div class="card-content">
-            <p class="title"> {{trucker_name}} </p>
-            <p class="subtitle"> 
-                Open from {{time_start}} to {{time_end}}<br>
-                {{street_address}}, {{city}}, {{state}} {{zipcode}}
-            </p>
+    <div class="box">
+        <div class="media-content">
+            <div class="content">
+                <p class="title">{{trucker_name}}</p>
+                <p class="subtitle"> 
+                    Open from {{time_start}} to {{time_end}}<br>
+                    {{street_address}}, {{city}}, {{state}} {{zipcode}}
+                </p>
+            </div>
+            <nav class="level is-mobile">
+                <div class="level-left">
+                    <button class="delete-post level-item button is-link is-rounded" data-id={{id}}>Delete Post</button>
+                    {{!-- <button class="update-post button is-info is-rounded" data-id={{id}}>Update Post</a> --}}
+                </div>
+            </nav>
+
+
         </div>
     </div>
 </div>
