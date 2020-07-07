@@ -1,4 +1,5 @@
 // Requiring necessary npm packages
+require("dotenv").config();
 const express = require("express");
 const exphbs = require("express-handlebars");
 const session = require("express-session");
@@ -14,6 +15,7 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
+app.use("/static", express.static("./static/"));
 // We need to use sessions to keep track of our user's login status
 app.use(
   session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
@@ -29,7 +31,6 @@ app.set("view engine", "handlebars");
 require("./routes/html-routes.js")(app);
 require("./routes/api-routes.js")(app);
 require("./routes/trucker-api-routes.js")(app);
-
 
 // Syncing our database and logging a message to the user upon success
 db.sequelize.sync().then(() => {
