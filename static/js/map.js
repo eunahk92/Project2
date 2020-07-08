@@ -1,20 +1,55 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable prefer-const */
 L.mapquest.key = "73YJDA218NrKCKrYr26MlqZldZPNKktE";
 
-// let searchTerm = [1, 2, 3, 4, 5];
+async function returnCurrentLink() {
+  let response = await fetch(window.location.href)
+  let currentLink = await response.url
+  return currentLink
+}
 
-$(".button").on("click", e => {
-  console.log(e.target.id);
-  let searchTerm = e.target.id;
-  Promise.all(searchTerm).then(getMap(searchTerm));
-});
-
-// getMap(searchTerm);
+returnCurrentLink()
+  .then(currentLink => {
+    if (currentLink === "http://localhost:8080/api/foodtrucks/5") {
+      let searchTerm = 5;
+      getMap(searchTerm)
+    } else if (currentLink === "http://localhost:8080/api/foodtrucks/4") {
+      let searchTerm = 4;
+      getMap(searchTerm)
+    } else if (currentLink === "http://localhost:8080/api/foodtrucks/3") {
+      let searchTerm = 3;
+      getMap(searchTerm)
+    } else if (currentLink === "http://localhost:8080/api/foodtrucks/2") {
+      let searchTerm = 2;
+      getMap(searchTerm)
+    } else if (currentLink === "http://localhost:8080/api/foodtrucks/1") {
+      let searchTerm = 1;
+      getMap(searchTerm)
+    } else {
+      let arrayOfAddresses = [];
+      $.ajax('/api/foodtrucks/', {
+        type: "GET"
+      }).then(result => {
+        console.log(result);
+        for (i = 0; i < result.length; i++) {
+          let fullAddress =
+            result[i].trucker_name +
+            ", " +
+            result[i].street_address +
+            ", " +
+            result[i].city +
+            ", " +
+            result[i].state +
+            " " +
+            result[i].zipcode;
+          arrayOfAddresses.push(fullAddress);
+        }
+        Promise.all(arrayOfAddresses)
+          .then(L.mapquest.geocoding().geocode(arrayOfAddresses, createMap))
+      });
+    }
+  })
 
 function getMap(searchTerm) {
   let arrayOfAddresses = [];
-  let truckNameArray = [];
   $.ajax("/api/foodtrucks", {
     type: "GET"
   }).then(result => {
@@ -28,20 +63,13 @@ function getMap(searchTerm) {
           ", " +
           result[i].state +
           " " +
-          result[i].zipcode;
-        let truckName = result[i].trucker_name;
-        truckNameArray.push(truckName);
+          result[i].zipcode;;
         arrayOfAddresses.push(fullAddress);
       }
     }
     Promise.all(arrayOfAddresses)
-      .then(runMapquest(arrayOfAddresses))
-      .then(console.log(truckNameArray));
+      .then(L.mapquest.geocoding().geocode(arrayOfAddresses, createMap))
   });
-}
-
-function runMapquest(arrayOfAddresses) {
-  L.mapquest.geocoding().geocode(arrayOfAddresses, createMap);
 }
 
 function createMap(error, response) {
@@ -51,7 +79,6 @@ function createMap(error, response) {
     zoom: 30
   });
 
-  // eslint-disable-next-line no-unused-vars
   const directionsControl = L.mapquest
     .directionsControl({
       className: "",
@@ -153,12 +180,10 @@ function generateMarkersFeatureGroup(response) {
     const location = response.results[i].locations[0];
     const locationLatLng = location.latLng;
 
-    console.log(location);
-
     const marker = L.marker(locationLatLng, {
       icon: L.mapquest.icons.marker()
     }).bindPopup(
-      location.street + ", " + location.adminArea5 + ", " + location.adminArea3
+      response.results[i].providedLocation.street
     );
 
     group.push(marker);
