@@ -15,16 +15,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://unpkg.com/leaflet-draw@0.4.13/dist/leaflet.draw.js"></script>
     <script src="https://code.jquery.com/jquery.js"></script>
-    <script src="/js/posts.js"></script>
 </head>
 
-<body class="container is-fluid">
+<body>
     <nav class="bd-navbar navbar is-warning has-shadow is-spaced" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-            <a class="navbar-item" href="https://bulma.io">
-            <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
-            </a>
-
             <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
@@ -34,7 +29,7 @@
 
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
-                <a class="button is-dark is-rounded" href="/">
+                <a class="button is-black is-rounded is-outlined" href="/">
                     Home
                 </a>
             </div>
@@ -53,8 +48,8 @@
             </div>
         </div>
     </nav>
-
-    <section class="hero is-medium is-warning is-bold">
+    
+    <section class="hero is-warning is-medium">
         <div class="hero-body">
             <div class="container">
                 <h1 class="title">
@@ -67,23 +62,20 @@
         </div>
     </section>
 
-    <main class="section">
+    <main class="section container is-fluid">
         {{{body}}}
     </main>
 
-<<<<<<< HEAD
     <div id="map"></div>
 
-    <footer class="footer">
-=======
-    <footer class="footer is-fixed-bottom">
->>>>>>> 4a4f76d7289df27b48169f79a10c3249883e5756
+    <footer class="footer is-fixed-to-bottom">
         <div class="content has-text-centered">
             <p>
                 <strong>MOTHER TRUCKER!</strong> by Chris Smith, Eunah Kim, and Matias Daldi | © 2020.
             </p>
         </div>
     </footer>
+
     <script src="/static/js/map.js"></script>
 </body>
 

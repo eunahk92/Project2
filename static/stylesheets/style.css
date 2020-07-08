@@ -22,7 +22,21 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    background-color: #ededed;
 }
 body > footer {
     margin-top: auto;
+}
+
+#postContainer {
+  border: 2px dashed black;
+}
+
+.card {
+  border-radius: 5px;
+}
+
+#postsCol {
+  overflow-y: scroll;
+  overflow-x:hidden;
 }
