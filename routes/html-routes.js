@@ -14,6 +14,11 @@ module.exports = function(app) {
      }).then(dbCategories => res.render("index", { food_type: dbCategories }));
   });
 
+  app.get("/comments", (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/main.html"));
+  });
+
+
   app.get("/signup", (req, res) => {
     // If the user already has an account send them to the members page
     if (req.user) {
