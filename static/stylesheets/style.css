@@ -14,7 +14,13 @@ form.login {
 }
 
 .subtitle {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 30px;
+}
+
+.descText {
   font-family: "Courier", Lucida Console, monospace;
+  font-size: 12px;
 }
 
 html,
