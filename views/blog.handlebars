@@ -1,7 +1,12 @@
-<main class="section">
-  <div class="post-container">
+<main class="section columns is-desktop">
+  <div class="column is-two-fifths">
     {{#each post}}
       {{> truckers_block}}
+    {{else}}
+      <p class="title">No food trucks currently available in this category.</p>
     {{/each}}
+  </div>
+  <div class="post-container" id="postsCol" style="height: 700px;">    
+    <!-- Put map div code here -->
   </div>
 </main>

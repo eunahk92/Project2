@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    let Categories = sequelize.define("categories", {
+    let Categories = sequelize.define("Categories", {
       food_type: {
         type: DataTypes.STRING,
         unique: true,

@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
-    const Trucker = sequelize.define("truckers", {
-      trucker_name: {
+    const Post = sequelize.define("Post", {
+      truck_name: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
@@ -49,7 +49,14 @@ module.exports = function(sequelize, DataTypes) {
       time_end: {
         type: DataTypes.TIME,
         allowNull: false
+      },
+      user_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false
       }
     });
-    return Trucker;
+
+    Post.sync();
+
+    return Post;
   };

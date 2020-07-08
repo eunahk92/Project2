@@ -1,21 +1,14 @@
 <div class="column is-full">
-    <div class="box">
-        <div class="media-content">
-            <div class="content">
-                <p class="title">{{trucker_name}}</p>
-                <p class="subtitle"> 
-                    Open from {{time_start}} to {{time_end}}<br>
-                    {{street_address}}, {{city}}, {{state}} {{zipcode}}
-                </p>
-            </div>
-            <nav class="level is-mobile">
-                <div class="level-left">
-                    <button class="delete-post level-item button is-link is-rounded" data-id={{id}}>Delete Post</button>
-                    {{!-- <button class="update-post button is-info is-rounded" data-id={{id}}>Update Post</a> --}}
-                </div>
-            </nav>
-
-
+    <div class="card is-primary">
+        <div class="card-content">
+            <p class="title"> {{truck_name}} </p>
+            <p class="subtitle"> 
+                Can be found at this location:<Br>
+                <span class="mx-4">{{street_address}}, {{city}}, {{state}} {{zipcode}}</span><br>
+                During these times: <Br>
+                <span class="mx-4">{{time_start}} to {{time_end}}</span>
+            </p>
+            <button class="level-item button is-warning is-rounded" data-id=${posts[i].id}>Live Comments</button>
         </div>
     </div>
 </div>

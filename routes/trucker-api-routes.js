@@ -1,40 +1,49 @@
 const db = require("../models");
-const moment = require("moment");
 
 module.exports = function (app) {
+    // Get all food categories in DB
     app.get("/api/categories", (req, res) => {
-        db.categories.findAll({
+        db.Categories.findAll({
             order: [
                 ['food_type', 'ASC']
-            ],
+            ]
         }).then(dbCategories => res.json(dbCategories));
     });
 
-    app.get("/api/foodtrucks", (req, res) => {
-        db.truckers.findAll({}).then(dbTruckers => res.json(dbTruckers));
-    });
+    // Get all Food Truck Posts in DB
+    app.get("/api/foodtrucks", (req, res) => db.Post.findAll({})
+    .then(dbPost => res.json(dbPost)));
 
+    // Get all Food Trucks Posts by specific Category ID 
     app.get("/api/foodtrucks/:categoryid", (req, res) => {
-        db.truckers.findAll({
+        db.Post.findAll({
             where: {
                 food_type: req.params.categoryid
             }
-        }).then(dbTruckers => {
-            res.render("blog", { post: dbTruckers })
+        }).then(dbPost => {
+            res.render("blog", { post: dbPost })
         });
     });
 
-
-    app.post("/api/foodtrucks", (req, res) => {
-        db.truckers.create(req.body).then(dbTruckers => res.json(dbTruckers));
+    // Get all Food Truck Posts by User ID
+    app.get("/api/foodtrucks/user/:userid", (req, res) => {
+        db.Post.findAll({
+            where: {
+                user_id: req.params.userid
+            }
+        }).then(dbPost => res.json(dbPost));
     });
 
-    app.delete("/api/foodtrucks/:postid", function (req, res) {
-        db.truckers.destroy({
+    // Post new Food Truck Post to DB
+    app.post("/api/foodtrucks", (req, res) => db.Post.create(req.body)
+    .then(dbPost => res.json(dbPost)));
+    
+    // Delete Food Truck Post in DB by Post ID
+    app.delete("/api/foodtrucks/posts/:postid", function (req, res) {
+        db.Post.destroy({
             where: {
                 id: req.params.postid
             }
-        }).then(dbTrucker => res.json(dbTrucker));
+        }).then(dbPost => res.json(dbPost));
     });
-
 }
