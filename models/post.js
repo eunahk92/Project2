@@ -43,20 +43,22 @@ module.exports = function(sequelize, DataTypes) {
         }
       },
       time_start: {
-        type: DataTypes.TIME,
+        type: DataTypes.STRING,
         allowNull: false
       },
       time_end: {
-        type: DataTypes.TIME,
-        allowNull: false
-      },
-      user_id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: false
       }
     });
 
-    Post.sync();
+    Post.associate = models => {
+      models.Post.belongsTo(models.User, {
+        foreignKey: {
+          allowNull: false
+        }
+      })
+    }
 
     return Post;
   };
