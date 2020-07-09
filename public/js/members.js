@@ -2,7 +2,7 @@ $(document).ready(() => {
   const postContainer = $("#postContainer");
   const foodTypeSelect = $("#foodTypes");
   const submitForm = $("#submitBtn");
-  let userEmail, userID;
+  let userEmail, userID, chosenFoodType;
 
   $.get("/api/user_data").then(data => {
     userID = data.id;
@@ -14,26 +14,30 @@ $(document).ready(() => {
   getPosts = userID => {
     $.get(`/api/foodtrucks/user/${userID}`, posts => {
       postContainer.empty();
-      if (posts.length === 0) {
+      let userPostsArr = posts.Posts;
+      
+      if (userPostsArr.length === 0) {
         let noPostMsg = `<h4 class="has-text-centered	is-italic">User has no current posts. Add a post to change this!</h4>`
         postContainer.append(noPostMsg);
       } else {
-        for (let i = 0; i < posts.length; i++) {
+        for (let i = 0; i < userPostsArr.length; i++) {
           let truckerPost = `
           <div class="column is-full">
             <div class="box">
                 <div class="media-content">
                     <div class="content">
-                        <p class="title">${posts[i].truck_name}</p>
-                        <p class="subtitle"> 
-                            Open from ${posts[i].time_start} to ${posts[i].time_end}<br>
-                            ${posts[i].street_address}, ${posts[i].city}, ${posts[i].state} ${posts[i].zipcode}
+                        <p class="title">${userPostsArr[i].truck_name}</p>
+                        <p class="descText"> 
+                          Can be found at this location:<Br>
+                          <span class="mx-4">${userPostsArr[i].street_address}, ${userPostsArr[i].city}, ${userPostsArr[i].state} ${userPostsArr[i].zipcode}</span><br>
+                          During these times: <Br>
+                          <span class="mx-4">${userPostsArr[i].time_start} to ${userPostsArr[i].time_end}</span>
                         </p>
                     </div>
                     <nav class="level">
                         <div class="level-left">
-                            <button id="delete-post" class="level-item button is-link is-rounded" data-id=${posts[i].id}>Delete Post</button>
-                            <button id="update-post" class="button is-info is-rounded" data-id=${posts[i].id}>Update Post</button>
+                            <button id="delete-post" class="level-item button is-link is-rounded" data-id=${userPostsArr[i].id}>Delete Post</button>
+                            <button id="update-post" class="button is-info is-rounded" data-id=${userPostsArr[i].id}>Update Post</button>
                         </div>
                     </nav>
                 </div>
@@ -55,6 +59,7 @@ $(document).ready(() => {
     let state = capitalizeWords($("#trucker_state").val().trim());
     let zipcode = $("#trucker_zipcode").val().trim();
     let foodType = $("#foodTypes option:selected").data("id");
+    chosenFoodType = $("#foodTypes option:selected").val();
     let startTime = $("#startTime option:selected").val();
     let endTime = $("#endTime option:selected").val();
 
@@ -67,7 +72,7 @@ $(document).ready(() => {
       food_type: foodType,
       time_start: startTime,
       time_end: endTime,
-      user_id: userID
+      UserId: userID
     };
     
     $.ajax("/api/foodtrucks", {
@@ -105,11 +110,7 @@ $(document).on("click", "#delete-post", function() {
 
 $(document).on("click", "#update-post", function() {
   let id = $(this).data("id");
-  
-  $.ajax(`/api/foodtrucks/${id}`, {
-      type: "PUT",
-      data: SOMETHINGHERE
-  }).then(() => location.reload());
+  window.location.href = `/foodtrucks?post_id=${id}`;
 });
 
 capitalizeWords = str => str.replace(/\w\S*/g, 
