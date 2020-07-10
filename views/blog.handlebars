@@ -1,12 +1,10 @@
+<div class="column is-three-quarters map-container">
+  <div id="map"></div>
+</div>
+<div class="post-container" id="postsCol" style="height: 560px;">
 {{#each post}}
-<main class="section columns is-desktop is-vcentered px-0 py-0">
-  <div class="column is-three-quarters">
-    <div id="map"></div>
-  </div>
-  <div class="post-container" id="postsCol" style="height: 560px;">
-    {{> truckers_block}}
-  </div>
+  {{> truckers_block}}
   {{else}}
   <p class="title has-text-centered">No food trucks currently available in this category.</p>
-  {{/each}}
-</main>
+{{/each}}
+</div>

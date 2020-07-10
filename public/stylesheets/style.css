@@ -43,6 +43,10 @@ body > footer {
 	border: 2px dashed black;
 }
 
+.post-container {
+	width: 100%;
+}
+
 .card {
 	border-radius: 5px;
 }
