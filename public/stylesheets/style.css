@@ -55,3 +55,9 @@ body > footer {
 	overflow-y: scroll;
 	overflow-x: hidden;
 }
+
+@media screen and (max-width: 767px) {
+    #logo {
+       display: none;
+    }
+}
