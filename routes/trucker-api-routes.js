@@ -5,13 +5,16 @@ module.exports = function(app) {
 	app.get('/api/categories', (req, res) => {
 		db.Categories.findAll({
 			order: [['food_type', 'ASC']],
-		}).then((dbCategories) => res.json(dbCategories));
+		}).then(dbCategories => res.json(dbCategories));
 	});
 
-  // Get all Food Truck Posts in DB
-  app.get("/api/foodtrucks", (req, res) => db.Post.findAll({})
-      .then(dbPost => res.json(dbPost)));
-
+	// Get all Food Truck Posts in DB
+	app.get('/api/foodtrucks', (req, res) =>
+		db.Post.findAll({
+			include: [db.Categories]
+		}).then(dbPost => res.json(dbPost))
+	);
+	
 	// Get all Food Truck Posts by User ID
 	app.get('/api/foodtrucks/user/:userid', (req, res) => {
 		db.User.findOne({
@@ -19,7 +22,7 @@ module.exports = function(app) {
 				id: req.params.userid,
 			},
 			include: [db.Post]
-		}).then(eachPost => res.json(eachPost));
+		}).then(posts => res.json(posts));
 	});
 
 	// Post new Food Truck Post to DB

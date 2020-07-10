@@ -35,13 +35,6 @@ module.exports = function(sequelize, DataTypes) {
             len: [1]
         }
       },
-      food_type: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        validate: {
-            len: [1]
-        }
-      },
       time_start: {
         type: DataTypes.STRING,
         allowNull: false
@@ -57,8 +50,13 @@ module.exports = function(sequelize, DataTypes) {
         foreignKey: {
           allowNull: false
         }
-      })
-    }
+      });
+      models.Post.belongsTo(models.Categories, {
+        foreignKey: {
+          allowNull: false
+        }
+      });
+    };
 
     return Post;
   };

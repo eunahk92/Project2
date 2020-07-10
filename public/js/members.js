@@ -26,13 +26,13 @@ $(document).ready(() => {
             <div class="box">
                 <div class="media-content">
                     <div class="content">
-                        <p class="title">${userPostsArr[i].truck_name}</p>
-                        <p class="descText"> 
-                          Can be found at this location:<Br>
-                          <span class="mx-4">${userPostsArr[i].street_address}, ${userPostsArr[i].city}, ${userPostsArr[i].state} ${userPostsArr[i].zipcode}</span><br>
-                          During these times: <Br>
-                          <span class="mx-4">${userPostsArr[i].time_start} to ${userPostsArr[i].time_end}</span>
-                        </p>
+                        <p class="title mb-1">${userPostsArr[i].truck_name}</p>
+                        <div class="descText">
+                          <i class="fas fa-map-marker-alt"></i> ${userPostsArr[i].street_address}, ${userPostsArr[i].city}, ${userPostsArr[i].state} ${userPostsArr[i].zipcode}<br>
+                        </div>
+                        <div class="descText">
+                            <i class="fas fa-clock"></i><span class="mx-1">${userPostsArr[i].time_start} to ${userPostsArr[i].time_end}</span></span>    
+                        </div>
                     </div>
                     <nav class="level">
                         <div class="level-left">
@@ -58,7 +58,7 @@ $(document).ready(() => {
     let city = capitalizeWords($("#trucker_city").val().trim());
     let state = capitalizeWords($("#trucker_state").val().trim());
     let zipcode = $("#trucker_zipcode").val().trim();
-    let foodType = $("#foodTypes option:selected").data("id");
+    let foodTypeId = $("#foodTypes option:selected").data("id");
     chosenFoodType = $("#foodTypes option:selected").val();
     let startTime = $("#startTime option:selected").val();
     let endTime = $("#endTime option:selected").val();
@@ -69,10 +69,10 @@ $(document).ready(() => {
       city: city,
       state: state,
       zipcode: zipcode,
-      food_type: foodType,
       time_start: startTime,
       time_end: endTime,
-      UserId: userID
+      UserId: userID,
+      CategoryId: foodTypeId
     };
     
     $.ajax("/api/foodtrucks", {
