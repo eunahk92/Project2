@@ -9,5 +9,11 @@ module.exports = function(sequelize, DataTypes) {
       }
     });
 
+    Categories.associate = models => {
+      Categories.hasMany(models.Post, {
+        onDelete: "Cascade"
+      });
+    };
+
     return Categories;
   };

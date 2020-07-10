@@ -35,7 +35,7 @@ module.exports = function(sequelize, DataTypes) {
   User.associate = models => {
     User.hasMany(models.Post, {
       onDelete: "Cascade"
-    })
+    });
   }
 
   return User;

@@ -20,6 +20,17 @@ module.exports = function(app) {
 		res.sendFile(path.join(__dirname, '../public/post.html'));
 	});
 
+	// Get all Food Trucks Posts by specific Category ID
+	app.get('/foodtrucks/:categoryid', (req, res) => {
+		db.Post.findAll({
+			where: {
+				CategoryId: req.params.categoryid,
+			},
+		}).then(dbPost => {
+			res.render('blog', { post: dbPost });
+		});
+	});
+
 	app.get('/signup', (req, res) => {
 		// If the user already has an account send them to the members page
 		if (req.user) {

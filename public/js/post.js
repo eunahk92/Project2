@@ -73,7 +73,7 @@ $(document).ready(function() {
     let state = capitalizeWords($("#update_trucker_state").val().trim());
     let zipcode = $("#update_trucker_zipcode").val().trim();
     let foodType = $("#update_foodTypes option:selected").data("id");
-    chosenFoodType = $("#update_foodTypes option:selected").val();
+    chosenFoodTypeId = $("#update_foodTypes option:selected").val();
     let startTime = $("#update_startTime option:selected").val();
     let endTime = $("#update_endTime option:selected").val();
 
@@ -86,7 +86,8 @@ $(document).ready(function() {
       zipcode: zipcode,
       food_type: foodType,
       time_start: startTime,
-      time_end: endTime
+      time_end: endTime,
+      CategoryId: chosenFoodTypeId
     };
 
     console.log(post);
