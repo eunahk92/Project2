@@ -8,21 +8,9 @@ module.exports = function(app) {
 		}).then((dbCategories) => res.json(dbCategories));
 	});
 
-	// Get all Food Truck Posts in DB
-	app.get('/api/foodtrucks', (req, res) =>
-		db.Post.findAll({}).then((dbPost) => res.json(dbPost))
-	);
-
-	// Get all Food Trucks Posts by specific Category ID
-	app.get('/api/foodtrucks/:categoryid', (req, res) => {
-		db.Post.findAll({
-			where: {
-				food_type: req.params.categoryid,
-			},
-		}).then(dbPost => {
-			res.render('blog', { post: dbPost });
-		});
-	});
+  // Get all Food Truck Posts in DB
+  app.get("/api/foodtrucks", (req, res) => db.Post.findAll({})
+      .then(dbPost => res.json(dbPost)));
 
 	// Get all Food Truck Posts by User ID
 	app.get('/api/foodtrucks/user/:userid', (req, res) => {
