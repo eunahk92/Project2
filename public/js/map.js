@@ -64,8 +64,8 @@ function getMap(searchTerm) {
 function createMap(error, response) {
   let map = L.mapquest.map("map", {
     layers: L.mapquest.tileLayer("map"),
-    center: [0, 0],
-    zoom: 30
+    center: [28.536275, -81.382162],
+    zoom: 50
   });
 
   map.addControl(L.mapquest.control({
