@@ -20,15 +20,29 @@
 <body>
     <nav class="bd-navbar navbar is-warning has-shadow is-spaced" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
-                data-target="navbarBasicExample">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
+            <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
             </a>
         </div>
 
-        <div id="navbarBasicExample" class="navbar-menu">
+    <nav class="navbar is-warning" role="navigation" id="navMenu" style="display: none;">
+        <div class="navbar-start">
+            <div class="navbar-dropdown">
+            <a class="navbar-item" href="/">
+                Home
+            </a>
+            <a class="navbar-item" href="/signup">
+                Sign Up
+            </a>
+            <a class="navbar-item" href="/login">
+                Login
+            </a>
+        </div>
+    </nav>
+
+        <div class="navbar-menu">
             <div class="navbar-start">
                 <a class="button is-black is-rounded is-outlined" href="/">
                     Home
@@ -55,7 +69,7 @@
             <div class="container columns is-vcentered">
                 <div class="column is-two-fifths">
                     <figure class="image is-128x128 is-pulled-right">
-                        <img class="is-rounded" src="/assets/mother_trucker.png">
+                        <img class="is-rounded" src="/assets/food.png">
                     </figure>
                 </div>
                 <div class="column">
@@ -71,7 +85,9 @@
     </section>
 
     <main class="section container is-fluid">
+        <div class="section columns is-desktop is-vcentered px-0 py-0">
         {{{body}}}
+        </div>
     </main>
 
     <footer class="footer">
@@ -82,6 +98,7 @@
     </footer>
 
     <script src="/js/map.js"></script>
+    <script src="/js/navbar.js"></script>
 </body>
 
 </html>

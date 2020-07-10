@@ -36,20 +36,6 @@ module.exports = function(app) {
 		res.redirect('/');
 	});
 
-	// Route to seed data for categories
-	// app.get('/seeds/categories', (req, res) => {
-	// 	db.sequelize.query("SET FOREIGN_KEY_CHECKS=0")
-	// 	.then(() => db.Categories.sync({force: true}))
-	// 	.then(() => db.sequelize.query("SET FOREIGN_KEY_CHECKS=1"))
-	// 	.then(() => db.Categories.bulkCreate([
-	// 		{food_type: "Asian"}, 
-	// 		{food_type: "American"}, 
-	// 		{food_type: "Mexican"}, 
-	// 		{food_type: "Dessert"}, 
-	// 		{food_type: "Vegetarian/Vegan"}
-	// 	])).then(res.redirect("/"));
-	// });
-
 	// Route for getting some data about our user to be used client side
 	app.get('/api/user_data', (req, res) => {
 		if (!req.user) {

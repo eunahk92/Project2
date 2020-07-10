@@ -1,5 +1,6 @@
 $(document).ready(function() {
   const submitForm = $("#submitBtn");
+  const cancelForm = $("#cancelBtn");
   let url = window.location.search;
   let postId;
 
@@ -16,8 +17,9 @@ $(document).ready(function() {
     $.get("/api/categories", data => {
       let rowsToAdd = [];
       for (var i = 0; i < data.length; i++) {
+        const { id, food_type } = data[i];
         let listOption = `
-          <option data-id="${data[i].id}">${data[i].food_type}</option>
+          <option data-id="${id}">${food_type}</option>
         `
         rowsToAdd.push(listOption);
       }
@@ -97,6 +99,11 @@ $(document).ready(function() {
       data: post
     }).then(() => window.location.href = "/members");
 
+  });
+
+  cancelForm.on("click", event => {
+    event.preventDefault();
+    window.location.href = "/members";
   });
 });
 

@@ -45,6 +45,6 @@ module.exports = function(app) {
 			where: {
 				id: req.body.id,
 			},
-		}).then((dbPost) => res.json(dbPost));
+		}).then(dbPost => res.json(dbPost));
 	});
 };

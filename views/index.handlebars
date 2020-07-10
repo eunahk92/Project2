@@ -1,11 +1,12 @@
-<main class="section">
+<div class="column is-three-quarters map-container">
+  <div id="map"></div>
+</div>
+<div class="post-container" id="postsCol" style="height: 500px;">
   <h3 class="subtitle">
-    Find a Food Truck
+  Find a Food Truck
   </h3>
-  <div class="columns post-container">
-    {{#each food_type}}
-    {{> categories_block}}
-    {{/each}}
-  </div>
-  <div id='map'></div>
-</main>
+
+  {{#each food_type}}
+  {{> categories_block}}
+  {{/each}}
+</div>

@@ -3,26 +3,30 @@ L.mapquest.key = "73YJDA218NrKCKrYr26MlqZldZPNKktE";
 let pathArray = window.location.pathname.split("/");
 let searchTerm = pathArray[pathArray.length - 1];
 if (!searchTerm || isNaN(searchTerm)) {
-  console.log('1')
   let arrayOfAddresses = [];
   $.ajax('/api/foodtrucks/', {
     type: "GET"
   }).then(result => {
-    for (i = 0; i < result.length; i++) {
-      let fullAddress =
-        result[i].truck_name +
-        ": " +
-        result[i].street_address +
-        ", " +
-        result[i].city +
-        ", " +
-        result[i].state +
-        " " +
-        result[i].zipcode;
-      arrayOfAddresses.push(fullAddress);
+    if (result.length === 0) {
+      $(".map-container").hide();
+    } else {
+      $(".map-container").show();
+      for (i = 0; i < result.length; i++) {
+        let fullAddress =
+          result[i].truck_name +
+          ": " +
+          result[i].street_address +
+          ", " +
+          result[i].city +
+          ", " +
+          result[i].state +
+          " " +
+          result[i].zipcode;
+        arrayOfAddresses.push(fullAddress);
+      }
+      Promise.all(arrayOfAddresses)
+        .then(() => L.mapquest.geocoding().geocode(arrayOfAddresses, createMap))
     }
-    Promise.all(arrayOfAddresses)
-      .then(() => L.mapquest.geocoding().geocode(arrayOfAddresses, createMap))
   });
 } else {
   console.log('2')
@@ -37,6 +41,7 @@ function getMap(searchTerm) {
   }).then(result => {
     for (i = 0; i < result.length; i++) {
       if (result[i].CategoryId === searchTerm) {
+        $(".map-container").show();
         let fullAddress =
           result[i].truck_name +
           ": " +
@@ -48,6 +53,8 @@ function getMap(searchTerm) {
           " " +
           result[i].zipcode;;
         arrayOfAddresses.push(fullAddress);
+      } else {
+        $(".map-container").hide();
       }
     }
     Promise.all(arrayOfAddresses)

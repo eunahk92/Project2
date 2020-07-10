@@ -2,7 +2,7 @@
 Mother Trucker is an application using Sequelize, Node, Express, and Express-Handlebars that allow users to find local Food Truck in their area while allowing Food Truck owners post their location and information for users to see.
 
 ## Link to deployed application on Heroku
-[Eat-A-Burger!](https://arcane-waters-56136.herokuapp.com/)
+[Mother Trucker!](https://arcane-waters-56136.herokuapp.com/)
 
 ## Table of Contents
 * [Installation](#installation)

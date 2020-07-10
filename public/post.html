@@ -12,15 +12,29 @@
 <body>
     <nav class="bd-navbar navbar is-warning has-shadow is-spaced" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
-                data-target="navbarBasicExample">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
+            <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
             </a>
         </div>
 
-        <div id="navbarBasicExample" class="navbar-menu">
+    <nav class="navbar is-warning" role="navigation" id="navMenu" style="display: none;">
+        <div class="navbar-start">
+            <div class="navbar-dropdown">
+            <a class="navbar-item" href="/">
+                Home
+            </a>
+            <a class="navbar-item" href="/signup">
+                Sign Up
+            </a>
+            <a class="navbar-item" href="/login">
+                Login
+            </a>
+        </div>
+    </nav>
+
+        <div class="navbar-menu">
             <div class="navbar-start">
                 <a class="button is-black is-rounded is-outlined" href="/">
                     Home
@@ -198,6 +212,7 @@
                     </div>
                     <div class="buttons has-addons is-right">
                         <button class="button is-success" id="submitBtn">Update Food Truck</button>
+                        <button class="button is-warning" id="cancelBtn">Cancel</button>
                     </div>
                 </form>
             </div> 
@@ -213,5 +228,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery.js"></script>
     <script type="text/javascript" src="/js/post.js"></script>
+    <script src="/js/navbar.js"></script>
 </body>
 </html>
