@@ -12,18 +12,7 @@ module.exports = function (app) {
 
     // Get all Food Truck Posts in DB
     app.get("/api/foodtrucks", (req, res) => db.Post.findAll({})
-    .then(dbPost => res.json(dbPost)));
-
-    // Get all Food Trucks Posts by specific Category ID 
-    app.get("/api/foodtrucks/:categoryid", (req, res) => {
-        db.Post.findAll({
-            where: {
-                food_type: req.params.categoryid
-            }
-        }).then(dbPost => {
-            res.render("blog", { post: dbPost })
-        });
-    });
+        .then(dbPost => res.json(dbPost)));
 
     // Get all Food Truck Posts by User ID
     app.get("/api/foodtrucks/user/:userid", (req, res) => {
@@ -36,8 +25,8 @@ module.exports = function (app) {
 
     // Post new Food Truck Post to DB
     app.post("/api/foodtrucks", (req, res) => db.Post.create(req.body)
-    .then(dbPost => res.json(dbPost)));
-    
+        .then(dbPost => res.json(dbPost)));
+
     // Delete Food Truck Post in DB by Post ID
     app.delete("/api/foodtrucks/posts/:postid", function (req, res) {
         db.Post.destroy({

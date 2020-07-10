@@ -5,13 +5,13 @@ const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 const db = require("../models");
 
-module.exports = function(app) {
+module.exports = function (app) {
   app.get("/", (req, res) => {
-    db.Categories.findAll({ 
+    db.Categories.findAll({
       order: [
         ["food_type", "ASC"]
       ]
-     }).then(dbCategories => res.render("index", { food_type: dbCategories }));
+    }).then(dbCategories => res.render("index", { food_type: dbCategories }));
   });
 
   app.get("/comments", (req, res) => {
@@ -40,5 +40,16 @@ module.exports = function(app) {
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
   app.get("/members", isAuthenticated, (req, res) => {
     res.sendFile(path.join(__dirname, "../public/members.html"));
+  });
+
+  // Get all Food Trucks Posts by specific Category ID 
+  app.get("/foodtrucks/:categoryid", (req, res) => {
+    db.Post.findAll({
+      where: {
+        food_type: req.params.categoryid
+      }
+    }).then(dbPost => {
+      res.render("blog", { post: dbPost })
+    });
   });
 };
