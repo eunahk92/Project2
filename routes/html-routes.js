@@ -6,7 +6,7 @@ const isAuthenticated = require('../config/middleware/isAuthenticated');
 const db = require('../models');
 
 
-module.exports = function(app) {
+module.exports = function (app) {
 	app.get('/', (req, res) => {
 		db.Categories.findAll({
 			order: [['food_type', 'ASC']],
@@ -20,28 +20,28 @@ module.exports = function(app) {
 	app.get('/foodtrucks', (req, res) => {
 		res.sendFile(path.join(__dirname, '../public/post.html'));
 	});
-  
-   // Get all Food Trucks Posts by specific Category ID 
-  app.get("/foodtrucks/:categoryid", (req, res) => {
-    db.Post.findAll({
-      where: {
-        food_type: req.params.categoryid
-      }
-    }).then(dbPost => {
-      res.render("blog", { post: dbPost })
-    });
-  });
 
-	// Get all Food Trucks Posts by specific Category ID
-	app.get('/foodtrucks/:categoryid', (req, res) => {
+	// Get all Food Trucks Posts by specific Category ID 
+	app.get("/foodtrucks/:categoryid", (req, res) => {
 		db.Post.findAll({
 			where: {
-				CategoryId: req.params.categoryid,
-			},
+				CategoryId: req.params.categoryid
+			}
 		}).then(dbPost => {
-			res.render('blog', { post: dbPost });
+			res.render("blog", { post: dbPost })
 		});
 	});
+
+	// Get all Food Trucks Posts by specific Category ID
+	// app.get('/foodtrucks/:categoryid', (req, res) => {
+	// 	db.Post.findAll({
+	// 		where: {
+	// 			CategoryId: req.params.categoryid,
+	// 		},
+	// 	}).then(dbPost => {
+	// 		res.render('blog', { post: dbPost });
+	// 	});
+	// });
 
 	app.get('/signup', (req, res) => {
 		// If the user already has an account send them to the members page

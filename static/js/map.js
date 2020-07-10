@@ -3,6 +3,7 @@ L.mapquest.key = "73YJDA218NrKCKrYr26MlqZldZPNKktE";
 let pathArray = window.location.pathname.split("/");
 let searchTerm = pathArray[pathArray.length - 1];
 if (!searchTerm || isNaN(searchTerm)) {
+  console.log('1')
   let arrayOfAddresses = [];
   $.ajax('/api/foodtrucks/', {
     type: "GET"
@@ -24,6 +25,8 @@ if (!searchTerm || isNaN(searchTerm)) {
       .then(() => L.mapquest.geocoding().geocode(arrayOfAddresses, createMap))
   });
 } else {
+  console.log('2')
+  console.log(parseInt(searchTerm))
   getMap(parseInt(searchTerm))
 }
 
@@ -33,7 +36,7 @@ function getMap(searchTerm) {
     type: "GET"
   }).then(result => {
     for (i = 0; i < result.length; i++) {
-      if (result[i].food_type === searchTerm) {
+      if (result[i].CategoryId === searchTerm) {
         let fullAddress =
           result[i].truck_name +
           ": " +
