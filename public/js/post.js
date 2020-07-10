@@ -30,7 +30,7 @@ $(document).ready(function() {
   $.get("/api/foodtrucks", data => {
     for (let i = 0; i < data.length; i++) {
       if (data[i].id == postId) {
-        let { truck_name, street_address, city, state, zipcode, time_start, time_end, food_type } = data[i];
+        let { truck_name, street_address, city, state, zipcode, time_start, time_end, CategoryId } = data[i];
 
         $("#update_trucker_name").val(truck_name);
         $("#update_trucker_addy").val(street_address);
@@ -55,7 +55,7 @@ $(document).ready(function() {
         $('#update_foodTypes').find('option').each(function() {
           let $this = $(this);
           let option = $this.val();
-          if ($this.data("id") == food_type) {
+          if ($this.data("id") == CategoryId) {
             $('#update_foodTypes').val(option);
             return false;
           }
@@ -73,7 +73,7 @@ $(document).ready(function() {
     let state = capitalizeWords($("#update_trucker_state").val().trim());
     let zipcode = $("#update_trucker_zipcode").val().trim();
     let foodType = $("#update_foodTypes option:selected").data("id");
-    chosenFoodTypeId = $("#update_foodTypes option:selected").val();
+    chosenFoodTypeId = $("#update_foodTypes option:selected").data("id");
     let startTime = $("#update_startTime option:selected").val();
     let endTime = $("#update_endTime option:selected").val();
 
