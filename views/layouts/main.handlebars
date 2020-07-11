@@ -22,6 +22,10 @@
         <div class="hero-head">
             <nav class="bd-navbar navbar is-warning is-spaced" role="navigation" aria-label="main navigation">
                 <div class="navbar-brand">
+                    <i class="fas fa-angle-double-right fa-3x ml-2"></i>
+                    <a class="navbar-item mr-4" href="/">
+                        <img src="/assets/logo.png" class="image is-720x240">
+                    </a>
                     <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
                     <span aria-hidden="true"></span>
                     <span aria-hidden="true"></span>
@@ -31,26 +35,16 @@
 
             <nav class="navbar is-warning" role="navigation" id="navMenu" style="display: none;">
                 <div class="navbar-start">
-                    <div class="navbar-dropdown">
-                    <a class="navbar-item" href="/">
-                        Home
-                    </a>
                     <a class="navbar-item" href="/signup">
-                        Sign Up
+                        <p class="descText"><strong>Sign Up</strong></p>
                     </a>
                     <a class="navbar-item" href="/login">
-                        Login
+                        <p class="descText"><strong>Login</strong></p>
                     </a>
                 </div>
             </nav>
 
                 <div class="navbar-menu">
-                    <div class="navbar-start">
-                        <a class="navbar-item button is-black is-rounded is-outlined" href="/">
-                            <img src="/assets/logo.png" class="image is-720x240">
-                        </a>
-                    </div>
-
                     <div class="navbar-end">
                         <div class="navbar-item">
                             <div class="buttons">
@@ -69,7 +63,7 @@
         
         <div class="hero-body">
             <div class="container columns is-vcentered is-desktop">
-                <div class="column is-one-fifth">
+                <div class="column is-one-fifth" id="logo">
                     <figure class="image is-128x128 is-pulled-right">
                         <img class="is-rounded" src="/assets/mothertrucker.png">
                     </figure>
