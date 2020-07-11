@@ -6,84 +6,65 @@
     <title>Mother Trucker!</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="/stylesheets/style.css">
     <script src="https://kit.fontawesome.com/882676d0bc.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery.js"></script></head>
 <body>
-    <nav class="bd-navbar navbar is-warning has-shadow is-spaced" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-            <span class="navbar-item">
-             <img src="/assets/logo.png" class="image is-720x240">
-            </span>
+    <header class="hero is-warning is-medium">
+        <div class="hero-head">
+            <nav class="bd-navbar navbar is-warning is-spaced" role="navigation" aria-label="main navigation">
+                <div class="navbar-brand">
+                    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    </a>
+                </div>
 
-            <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            </a>
-        </div>
+            <nav class="navbar is-warning" role="navigation" id="navMenu" style="display: none;">
+                <div class="navbar-start">
+                    <div class="navbar-dropdown">
+                    <a class="navbar-item" href="/">
+                        Home
+                    </a>
+                    <a class="navbar-item" href="/signup">
+                        Sign Up
+                    </a>
+                    <a class="navbar-item" href="/login">
+                        Login
+                    </a>
+                </div>
+            </nav>
 
-    <nav class="navbar is-warning" role="navigation" id="navMenu" style="display: none;">
-        <div class="navbar-start">
-            <div class="navbar-dropdown">
-            <a class="navbar-item" href="/">
-                Home
-            </a>
-            <a class="navbar-item" href="/signup">
-                Sign Up
-            </a>
-            <a class="navbar-item" href="/login">
-                Login
-            </a>
-        </div>
-    </nav>
-
-        <div class="navbar-menu">
-            <div class="navbar-start">
-                <a class="button is-black is-rounded is-outlined" href="/">
-                    Home
-                </a>
-            </div>
-
-            <div class="navbar-end">
-                <div class="navbar-item">
-                    <div class="buttons">
-                        <a class="button is-black is-rounded is-outlined" href="/login">
-                            Log in
-                        </a>
-                        <a class="button is-black is-rounded" href="/signup">
-                            <strong>Sign up</strong>
+                <div class="navbar-menu">
+                    <div class="navbar-start">
+                        <a class="navbar-item button is-black is-rounded is-outlined" href="/">
+                            <img src="/assets/logo.png" class="image is-720x240">
                         </a>
                     </div>
-                </div>
-            </div>
-        </div>
-    </nav>
 
-    <section class="hero is-warning is-medium">
-        <div class="hero-body">
-            <div class="container columns is-vcentered">
-                <div class="column is-two-fifths">
-                    <figure class="image is-128x128 is-pulled-right">
-                        <img class="is-rounded" src="assets/mother_trucker.png">
-                    </figure>
+                    <div class="navbar-end">
+                        <div class="navbar-item">
+                            <div class="buttons">
+                                <a class="button is-black is-rounded is-outlined" href="/login">
+                                    Log in
+                                </a>
+                                <a class="button is-black is-rounded" href="/signup">
+                                    <strong>Sign up</strong>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="column">
-                    <h1 class="title">
-                        MOTHER TRUCKERS
-                    </h1>
-                    <h3 class="subtitle">
-                        Calling all Food Truck Lovers
-                    </h3>
-                </div>
-            </div>
+            </nav>
         </div>
-    </section>
+    </header>
 
     <main class="section container is-fluid">
         <div class="columns">
             <div class="column is-three-fifths is-offset-one-fifth">
-            <h3 class="subtitle">Update your Post:</h3>
+            <h3 class="postTitle">Update your Post:</h3><br>
                 <form class="trucker-form">
                     <div class="field is-horizontal">
                         <div class="field-label is-normal">

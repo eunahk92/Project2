@@ -8,6 +8,10 @@ form.login {
 	width: 100%;
 }
 
+#siteName { margin-bottom: 0px;}
+
+.footer { padding-bottom: 48px; }
+
 .title {
 	font-family: 'Permanent Marker', cursive;
 	font-size: 50px;
@@ -39,22 +43,41 @@ body > footer {
 	margin-top: auto;
 }
 
-#postContainer {
-	border: 2px dashed black;
-}
+#postContainer { border: 2px dashed black; }
 
-.post-container {
-	width: 100%;
-}
+.post-container { width: 100%; }
 
-.card {
-	border-radius: 5px;
-}
+.card { border-radius: 5px; }
 
 #postsCol {
 	overflow-y: scroll;
 	overflow-x: hidden;
 }
+
+/* Typewriter animation starts */
+
+.typewriter2 { overflow: hidden; }
+
+.cursorMini {
+    display: inline-block;
+    width: 3px;
+    background-color: #ccc;
+    margin-left: .5rem;
+    animation: blink 1s infinite;
+}
+
+.cursor.typing, .cursorMini.typing { animation: none; }
+
+@keyframes blink {
+    0% { background-color: #ccc; }
+    49% { background-color: #ccc; }
+    50% { background-color: transparent; }
+    99% { background-color: transparent; }
+    100% { background-color: #ccc; }
+}
+
+
+/* Typewriter animation ends */
 
 @media screen and (max-width: 767px) {
     #logo {
