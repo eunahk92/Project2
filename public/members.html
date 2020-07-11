@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Passport Authentication</title>
+		<title>Mother Trucker: Members</title>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link
@@ -237,9 +237,30 @@
 								</div>
 							</div>
 						</div>
+						<div class="field is-horizontal">
+							<div class="field-label is-normal">
+								<label class="filters">Filters:</label>
+							</div>
+							<p class="help mt-3 mr-4">(Check any that apply)</p>
+							<div class="field-body">
+							  <div class="field is-narrow">
+								<div class="control">
+									<label class="checkbox mx-6">
+										<input type="checkbox" id="cashOnlyBox">Cash Only
+									</label>
+									<label class="checkbox mx-6">
+										<input type="checkbox" id="cardOnlyBox">Card Only
+									</label>
+									<label class="checkbox mx-6">
+										<input type="checkbox" id="outdoorSeatingBox">Outdoor Seating Available
+									</label>
+								</div>
+							  </div>
+							</div>
+						  </div>
 						<div class="buttons has-addons is-right">
 							<button class="button is-success" id="submitBtn">
-								Submit Food Truck
+								Submit Food Truck Post
 							</button>
 						</div>
 					</form>
@@ -271,7 +292,7 @@
 		<script src="https://kit.fontawesome.com/882676d0bc.js" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script src="https://code.jquery.com/jquery.js"></script>
-		<script type="text/javascript" src="js/members.js"></script>
+		<script type="text/javascript" src="/js/members.js"></script>
 		<script src="/js/navbar.js"></script>
 	</body>
 </html>
