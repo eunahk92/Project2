@@ -3,12 +3,31 @@
         <div class="card-content">
             <p class="postTitle"> {{truck_name}} </p>
             <div class="descText">
-                <i class="fas fa-map-marker-alt"></i> {{street_address}}, {{city}}, {{state}} {{zipcode}}<br>
+                <i class="fas fa-map-marker-alt mx-2"></i><strong>Location:</strong> {{street_address}}, {{city}}, {{state}} {{zipcode}}<br>
             </div>
             <div class="descText">
-                <i class="fas fa-clock"></i><span class="mx-1">{{time_start}} to {{time_end}}</span>    
-            </div><br>
-            <a type="button" href="/comments" class="level-item button is-warning is-rounded" data-id={{id}}>Live Chat Room</a>
+                <i class="fas fa-clock mx-2"></i><strong>Hours:</strong> {{time_start}} to {{time_end}}</span>    
+            </div>
+            {{#if outdoor_seating}}
+            <div id="outdoorSeatingDiv-{{id}}">
+                <i class="fas fa-check ml-5"></i><span class="mx-2 is-italic" id="outdoorSeatingBox-{{id}}"><small>Outdoor Seating Available</small></span>
+            </div>
+            {{else}}
+            <div id="outdoorSeatingDiv-{{id}}">
+                <i class="fas fa-ban ml-5"></i><span class="mx-2 is-italic" id="outdoorSeatingBox-{{id}}"><small>Outdoor Seating Unavailable</small></span>
+            </div>
+            {{/if}}
+            {{#if only_cash}}
+            <div id="cashOnlyDiv-{{id}}">
+                <i class="fas fa-check ml-5"></i><span class="mx-2 is-italic" id="cashOnlyBox-{{id}}"><small>Accepting Cash Only</small></span>
+            </div>
+            {{/if}}
+            {{#if only_cc}}
+            <div id="cardOnlyDiv-{{id}}">
+                <i class="fas fa-check ml-5"></i><span class="mx-2 is-italic" id="cardOnlyBox-{{id}}"><small>Accepting Card Only</small></span>
+            </div>
+            {{/if}}
+            <a type="button" href="/comments" class="level-item button is-warning is-rounded mt-5" data-id={{id}}>Live Chat Room</a>
         </div>
     </div>
 </div>

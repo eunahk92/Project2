@@ -21,7 +21,8 @@ $(document).ready(() => {
       postContainer.append(noPostMsg);
     } else {
       for (let i = 0; i < Posts.length; i++) {
-        const { truck_name, street_address, city, state, zipcode, time_start, time_end, id, CategoryId } = Posts[i];
+        const { truck_name, street_address, city, state, zipcode, time_start, time_end, id, CategoryId, only_cc, only_cash, outdoor_seating } = Posts[i];
+
         let truckerPost = `
         <div class="column is-full">
           <div class="box">
@@ -29,10 +30,16 @@ $(document).ready(() => {
                   <div class="content">
                       <p class="title mb-2">${truck_name} <span class="subtitle is-pulled-right is-italic" id="categoryLine-${id}"></span></p>
                       <div class="descText">
-                        <i class="fas fa-map-marker-alt"></i> ${street_address}, ${city}, ${state} ${zipcode}<br>
+                        <i class="fas fa-map-marker-alt mx-2"></i><strong>Location:</strong> ${street_address}, ${city}, ${state} ${zipcode}<br>
                       </div>
                       <div class="descText">
-                          <i class="fas fa-clock"></i><span class="mx-1">${time_start} to ${time_end}</span>
+                          <i class="fas fa-clock mx-2"></i><strong>Hours:</strong> ${time_start} to ${time_end}</span>
+                      </div>
+                      <div id="outdoorSeatingDiv-${id}">
+                      </div>
+                      <div id="cashOnlyDiv-${id}">
+                      </div>
+                      <div id="cardOnlyDiv-${id}">
                       </div>
                   </div>
                   <nav class="level">
@@ -51,6 +58,22 @@ $(document).ready(() => {
         category = matchedCategory[0].food_type;
         $(`#categoryLine-${id}`).text(category);
 
+        const cardMsg = "Accepting Card Only";
+        const cashMsg = "Accepting Cash Only";
+        const hasOutdoorSeatingAvailMsg = "Outdoor Seating Available";
+        const noOutdoorSeatingAvailMsg = "Outdoor Seating Unavailable";
+
+        if (only_cc) {
+          $(`#cardOnlyDiv-${id}`).append(`<i class="fas fa-check ml-5"></i><span class="mx-2 is-italic" id="cardOnlyBox-${id}"><small>${cardMsg}</small></span>`);
+        }
+        if (only_cash) {
+          $(`#cashOnlyDiv-${id}`).append(`<i class="fas fa-check ml-5"></i><span class="mx-2 is-italic" id="cashOnlyBox-${id}"><small>${cashMsg}</small></span>`);
+        }
+        if (outdoor_seating) {
+          $(`#outdoorSeatingDiv-${id}`).append(`<i class="fas fa-check ml-5"></i><span class="mx-2 is-italic" id="outdoorSeatingBox-${id}"><small>${hasOutdoorSeatingAvailMsg}</small></span>`);
+        } else {
+          $(`#outdoorSeatingDiv-${id}`).append(`<i class="fas fa-ban ml-5"></i><span class="mx-2 is-italic" id="outdoorSeatingBox-${id}"><small>${noOutdoorSeatingAvailMsg}</small></span>`);
+        }
       }
     }
   }
@@ -66,6 +89,9 @@ $(document).ready(() => {
     const foodTypeId = $("#foodTypes option:selected").data("id");
     const startTime = $("#startTime option:selected").val();
     const endTime = $("#endTime option:selected").val();
+    const cardOnly = $("#cardOnlyBox").prop("checked");
+    const cashOnly = $("#cashOnlyBox").prop("checked");
+    const outdoorAvail = $("#outdoorSeatingBox").prop("checked");
 
     const newPost = {
       truck_name: truckerName,
@@ -76,7 +102,10 @@ $(document).ready(() => {
       time_start: startTime,
       time_end: endTime,
       UserId: userID,
-      CategoryId: foodTypeId
+      CategoryId: foodTypeId,
+      only_cc: cardOnly,
+      only_cash: cashOnly,
+      outdoor_seating: outdoorAvail
     };
     
     $.ajax("/api/foodtrucks", {

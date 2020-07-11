@@ -42,6 +42,18 @@ module.exports = function(sequelize, DataTypes) {
       time_end: {
         type: DataTypes.STRING,
         allowNull: false
+      },
+      outdoor_seating: {
+        type: DataTypes.BOOLEAN,
+        isDefault: false
+      },
+      only_cc: {
+        type: DataTypes.BOOLEAN,
+        isDefault: false
+      },
+      only_cash: {
+        type: DataTypes.BOOLEAN,
+        isDefault: false
       }
     });
 
