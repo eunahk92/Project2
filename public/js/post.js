@@ -57,7 +57,7 @@ $(document).ready(function() {
         $('#update_foodTypes').find('option').each(function() {
           let $this = $(this);
           let option = $this.val();
-          if ($this.data("id") == CategoryId) {
+          if ($this.data("id") === CategoryId) {
             $('#update_foodTypes').val(option);
             return false;
           }
